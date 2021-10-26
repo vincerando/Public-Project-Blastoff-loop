@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Blastoff 2.0</title>
+    <!-- Vincent Randol -->
+
+    <style>
+        body{
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/387/95/786/risk-of-rain-video-game-art-purple-hd-wallpaper-preview.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+    <!--    The button  -->
+    <div>
+        <input type="button" id="btnClick" value="Launch Start"/>
+    </div>
+</body>
+<script>
+
+    var launchSound = new Audio("Launch.mp3");
+    var time = 50;
+    var x = 5000;
+
+        // This code runs when time = 0 
+        function launchSequence(){
+        console.log("0 | We have liftoff!");
+        launchSound.play();
+        };
+        
+        // This code runs after the initial setTimeout function runs.
+        function liftoff(){
+            if (time == 25){
+            console.log("Warning Less than ½ way to launch, time left: " + time);
+            time -= 5;
+            } else{
+            console.log(time + " Seconds remaining...");
+            time -= 5;
+            };
+            if (time != 0){
+            setTimeout(liftoff, x);
+            } else{
+                setTimeout(launchSequence, 5000);
+            };
+        };
+
+        
+
+        document.getElementById("btnClick").onclick = clickEvent;
+
+        function clickEvent(){
+            // Makes the button vanish
+            btnClick.style.visibility = 'hidden';
+            
+            //The initial liftoff
+            liftoff();
+            
+            //setTimeout(liftoff, x); (discarded code)
+        }
+
+        
+        
+</script>
+
+</html>
